@@ -273,4 +273,28 @@ _.extend( CarAnimator.prototype, myMixins );
 _.extend( PersonAnimator.prototype, myMixins );
 ```
 
+## The Decorator Pattern
+Classically, Decorators offered the ability to add behaviour to existing classes in a system dynamically. The idea was that the decoration itself wasn't essential to the base functionality of the class, otherwise it would be baked into the superclass itself.
 
+They can be used to modify existing systems where we wish to add additional features to objects without the need to heavily modify the underlying code using them. A common reason why developers use them is their applications may contain features requiring a large quantity of distinct types of object. 
+```js
+// A vehicle constructor
+function Vehicle( vehicleType ){
+    // some sane defaults
+    this.vehicleType = vehicleType || "car";
+    this.model = "default";
+    this.license = "00000-000";
+}
+
+// Lets create a new instance of vehicle, to be decorated
+var truck = new Vehicle( "truck" );
+ 
+// New functionality we're decorating vehicle with
+truck.setModel = function( modelName ){
+    this.model = modelName;
+};
+ 
+truck.setColor = function( color ){
+    this.color = color;
+};
+```
