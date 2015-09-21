@@ -8,14 +8,14 @@
 is a bad design that is worthy of documenting
 
 ## Categories Of Design Pattern
-### Creational Design Patterns
+#### Creational Design Patterns
 focus on handling object creation mechanisms where objects are created in a manner suitable for the situation we're working in. 
 Patterns: Constructor, Factory, Abstract, Prototype, Singleton and Builder.
 
-### Structural Design Patterns
+#### Structural Design Patterns
 are concerned with object composition and typically identify simple ways to realize relationships between different objects. Patterns: Decorator, Facade, Flyweight, Adapter and Proxy
 
-### Behavioral Design Patterns
+#### Behavioral Design Patterns
 focus on improving or streamlining the communication between disparate objects in a system. Patterns: Iterator, Mediator, Observer and Visitor.
 
 ## Patterns
