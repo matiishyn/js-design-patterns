@@ -324,3 +324,57 @@ MVVM (Model View ViewModel) is an architectural pattern based on MVC and MVP, wh
 
 The ViewModel can be considered a specialized Controller that acts as a data converter. It changes Model information into View information, passing commands from the View to the Model.
 
+## Modern Modular JavaScript Design Patterns
+### AMD
+The overall goal for the AMD (Asynchronous Module Definition) format is to provide a solution for modular JavaScript that developers can use today. The AMD module format itself is a proposal for defining modules where both the module and dependencies can be asynchronously loaded.
+
+##### Loading AMD Modules Using RequireJS
+```js
+require(["app/myModule"],
+    function( myModule ){
+        // start the main module which in-turn
+        // loads other modules
+        var module = new myModule();
+        module.doStuff();
+});
+```
+### CommonJS
+A Module Format Optimized For The Server. The CommonJS module proposal specifies a simple API for declaring modules server-side and unlike AMD attempts to cover a broader set of concerns such as io, file-system, promises and more.
+
+```js
+// package/lib is a dependency we require
+var lib = require( "package/lib" );
+ 
+// behaviour for our module
+function foo(){
+    lib.log( "hello world!" );
+}
+ 
+// export (expose) foo to other modules
+exports.foo = foo;
+```
+##### AMD-equivalent Of The First CommonJS Example
+```js
+define(function(require){
+   var lib = require( "package/lib" );
+ 
+    // some behaviour for our module
+    function foo(){
+        lib.log( "hello world!" );
+    }
+ 
+    // export (expose) foo for other modules
+    return {
+        foobar: foo
+    };
+});
+```
+
+### UMD
+For developers wishing to create modules that can work in both browser and server-side environments, existing solutions could be considered little lacking. To help alleviate this, James Burke, I and a number of other developers created UMD (Universal Module Definition) https://github.com/umdjs/umd.
+
+### ES6 Modules
+tbd
+
+## Namespacing Patterns, [ref](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailnamespacing)
+maybe, one day, later...
