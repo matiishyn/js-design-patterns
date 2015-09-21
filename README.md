@@ -181,3 +181,45 @@ $( el ).on( "/login", function( event ){...} );
 // jQuery: $(obj).off( "channel" );
 $( el ).off( "/login" );
 ```
+
+## The Mediator Pattern
+A real-world analogy could be a typical airport traffic control system. A tower (Mediator) handles what planes can take off and land because all communications (notifications being listened out for or broadcast) are done from the planes to the control tower, rather than from plane-to-plane. A centralized controller is key to the success of this system and that's really the role a Mediator plays in software design.
+
+A Mediator is an object that coordinates interactions (logic and behavior) between multiple objects. It makes decisions on when to call which objects, based on the actions (or inaction) of other objects and input.
+
+##### Events
+Both the event aggregator and mediator use events, in the above examples. 
+
+#### Mediator Vs. Facade
+
+The Mediator centralizes communication between modules where it's explicitly referenced by these modules. In a sense this is multidirectional. The Facade however just defines a simpler interface to a module or system but doesn't add any additional functionality. Other modules in the system aren't directly aware of the concept of a facade and could be considered unidirectional.
+
+## The Prototype Pattern
+The GoF refer to the prototype pattern as one which creates objects based on a template of an existing object through cloning.
+
+We can think of the prototype pattern as being based on prototypal inheritance where we create objects which act as prototypes for other objects. The prototype object itself is effectively used as a blueprint for each object the constructor creates. If the prototype of the constructor function used contains a property called name for example (as per the code sample lower down), then each object created by that same constructor will also have this same property.
+
+```js
+var vehicle = {
+  getModel: function () {
+    console.log( "The model of this vehicle is.." + this.model );
+  }
+};
+ 
+var car = Object.create(vehicle, {
+  "id": {
+    value: MY_GLOBAL.nextId(),
+    // writable:false, configurable:false by default
+    enumerable: true
+  },
+  "model": {
+    value: "Ford",
+    enumerable: true
+  }
+});
+```
+
+## The Command Pattern, [ref](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#commandpatternjavascript)
+The Command pattern aims to encapsulate method invocation, requests or operations into a single object and gives us the ability to both parameterize and pass method calls around that can be executed at our discretion. In addition, it enables us to decouple objects invoking the action from the objects which implement them, giving us a greater degree of overall flexibility in swapping out concrete classes (objects).
+
+
