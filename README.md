@@ -20,8 +20,13 @@ focus on improving or streamlining the communication between disparate objects i
 
 ## Patterns
 
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
+
 Pattern | Description  
--|-
+---|---
 **Creational** | Based on the concept of creating an object.
 ***Class*** | 
 Factory Method | This makes an instance of several derived classes based on interfaced data or events.
