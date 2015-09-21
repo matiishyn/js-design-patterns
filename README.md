@@ -223,3 +223,54 @@ var car = Object.create(vehicle, {
 The Command pattern aims to encapsulate method invocation, requests or operations into a single object and gives us the ability to both parameterize and pass method calls around that can be executed at our discretion. In addition, it enables us to decouple objects invoking the action from the objects which implement them, giving us a greater degree of overall flexibility in swapping out concrete classes (objects).
 
 
+## The Facade Pattern
+When we put up a facade, we present an outward appearance to the world which may conceal a very different reality. This was the inspiration for the name behind the next pattern we're going to review - the Facade pattern. This pattern provides a convenient higher-level interface to a larger body of code, hiding its true underlying complexity. Think of it as simplifying the API being presented to other developers, something which almost always improves usability.
+```js
+var addMyEvent = function( el,ev,fn ){
+   if( el.addEventListener ){
+            el.addEventListener( ev,fn, false );
+      }else if(el.attachEvent){
+            el.attachEvent( "on" + ev, fn );
+      } else{
+           el["on" + ev] = fn;
+    }
+};
+```
+
+## The Factory Pattern
+
+The Factory pattern is another creational pattern concerned with the notion of creating objects. Where it differs from the other patterns in its category is that it doesn't explicitly require us use a constructor. Instead, a Factory can provide a generic interface for creating objects, where we can specify the type of factory object we wish to be created.
+
+## The Mixin Pattern
+#### Sub-classing
+```js
+// a new instance of Person can then easily be created as follows:
+var clark = new Person( "Clark", "Kent" );
+ 
+// Define a subclass constructor for for "Superhero":
+var Superhero = function( firstName, lastName, powers ){
+ 
+    // Invoke the superclass constructor on the new object
+    // then use .call() to invoke the constructor as a method of
+    // the object to be initialized.
+ 
+    Person.call( this, firstName, lastName );
+ 
+    // Finally, store their powers, a new array of traits not found in a normal "Person"
+    this.powers = powers;
+};
+ 
+Superhero.prototype = Object.create( Person.prototype );
+var superman = new Superhero( "Clark", "Kent", ["flight","heat-vision"] );
+console.log( superman );
+ 
+// Outputs Person attributes as well as powers
+```
+#### Mixins
+```js
+// Extend both constructors with our Mixin
+_.extend( CarAnimator.prototype, myMixins );
+_.extend( PersonAnimator.prototype, myMixins );
+```
+
+
